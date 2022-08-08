@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom"
 
 import { NotFound } from "@/pages/web/notfound"
 import { Home } from "@/pages/web/home"
+import { DownLoad } from "@/pages/web/download"
 
 const RoutesConfig:Array<any> = [
     {
@@ -189,7 +190,7 @@ const RoutesConfig:Array<any> = [
     {
         key: 'DOWNLOAD',
         path: '/download',
-        component: <NotFound />,
+        component: <DownLoad />,
         label: (<NavLink to='/download' style={{ fontWeight: 'bloder' }}>
             DOWNLOAD
         </NavLink>),
@@ -198,7 +199,7 @@ const RoutesConfig:Array<any> = [
     {
         key: 'CONTACT US',
         path: '/contactus',
-        component: <NotFound />,
+        component: <DownLoad />,
         label: (<NavLink to='/contactus' style={{ fontWeight: 'bloder' }}>
             CONTACT US
         </NavLink>),
@@ -207,7 +208,7 @@ const RoutesConfig:Array<any> = [
     {
         key: 'HELP',
         path: '/help',
-        component: <NotFound />,
+        component: <DownLoad />,
         label: (<NavLink to='/help' style={{ fontWeight: 'bloder' }}>
             HELP
         </NavLink>),

@@ -6,6 +6,7 @@ import flat from '@/utils/flat'
 import { Footer } from 'antd/lib/layout/layout';
 import { InitProps } from '@/models';
 import { Logo } from '@/components/Logo'
+import './guard.less'
 //函数组件
 
 const RouterGuard:FC<InitProps> = (props:InitProps) =>{
@@ -59,7 +60,7 @@ const RouterGuard:FC<InitProps> = (props:InitProps) =>{
         <Layout style={{ minHeight: '100vh' }} className={ 'overflow-hidden' }>
             <Header style={{ display: 'flex', alignItems: 'center' }}>
                 <Logo />
-                <Menu style={{ marginLeft: '20px' }} selectable={true} mode="horizontal" theme="dark" items={routerConfig} />
+                <Menu className='menu' inlineIndent={ 5 } style={{ marginLeft: '10px' }} selectable={true} mode="horizontal" theme="dark" items={routerConfig} />
             </Header>
             <Content style={{ margin: '5px 16px 0 16px', height: '0' }} className={ 'overflow-hidden' }>
                 <Routes>

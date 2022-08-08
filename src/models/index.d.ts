@@ -15,8 +15,15 @@ interface Gene {
     name: string,
 }
 
+interface pit {
+    sx: number,
+    sy: number,
+    gr: any
+}
+
 export type {
     InitProps,
     RouterInterface,
-    Gene
+    Gene,
+    pit
 }

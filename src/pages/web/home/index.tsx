@@ -25,9 +25,10 @@ export const Home: React.FC = observer((props) => {
       timeType: 0,
     }
     Test.getList(params).then(res => {
-      console.log(res)
+      console.log(res, props)
       // navigate('/download', { state: { id: 1, name: 'hahaha' } })
     })
+    console.log(props)
   }, [])
 
   const setGene = () => {
@@ -35,7 +36,6 @@ export const Home: React.FC = observer((props) => {
       id: 'xxxx',
       name: 'zzk'
     })
-    console.log(mindGene.currentGene)
   }
 
   return <Card className='height-block overflow-y-auto' hoverable>

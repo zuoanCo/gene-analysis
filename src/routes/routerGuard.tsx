@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Layout, Menu, Badge, Dropdown, Divider} from 'antd';
+import {Layout, Menu} from 'antd';
 const { Header, Content } = Layout;
-import { Route, NavLink, Routes, useNavigate, Outlet } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import flat from '@/utils/flat'
 import { Footer } from 'antd/lib/layout/layout';
 import { InitProps } from '@/models';
@@ -10,6 +10,7 @@ import './guard.less'
 //函数组件
 
 const RouterGuard:FC<InitProps> = (props:InitProps) =>{
+    const [defaultKey, setDefaultKey] = useState(['HOME'])
     const { routerConfig } = props;
     const flatRouterConfig = flat(routerConfig, 'children');
     let targetRouterData = {
@@ -26,6 +27,7 @@ const RouterGuard:FC<InitProps> = (props:InitProps) =>{
 
     useEffect(() => {
         // console.log(import.meta.env.VITE_APP_BASE_URL)
+        console.log(props)
     },[])
 	
     //渲染主要内容
@@ -56,11 +58,17 @@ const RouterGuard:FC<InitProps> = (props:InitProps) =>{
             }
         }
     }
+
+    const selectTitle = (item: any, key: any, keyPath: any, selectedKeys: any, domEvent: any) => {
+        console.log(item, key, keyPath, selectedKeys, domEvent)
+    }
+
     return (
         <Layout style={{ minHeight: '100vh' }} className={ 'overflow-hidden' }>
             <Header style={{ display: 'flex', alignItems: 'center' }}>
                 <Logo />
-                <Menu className='menu' inlineIndent={ 5 } style={{ marginLeft: '10px' }} selectable={true} mode="horizontal" theme="dark" items={routerConfig} />
+                <Menu className='menu' inlineIndent={ 5 } onSelect={ selectTitle } style={{ marginLeft: '10px' }} selectable={true} mode="horizontal" theme="dark" items={routerConfig} />
+                {/* <Menu className='menu' selectedKeys={ defaultKey } inlineIndent={ 5 } onSelect={ selectTitle } style={{ marginLeft: '10px' }} selectable={true} mode="horizontal" theme="dark" items={routerConfig} /> */}
             </Header>
             <Content style={{ margin: '5px 16px 0 16px', height: '0' }} className={ 'overflow-hidden' }>
                 <Routes>
@@ -75,7 +83,7 @@ const RouterGuard:FC<InitProps> = (props:InitProps) =>{
                     }
                 </Routes>
             </Content>
-            <Footer />
+            <Footer style={{ paddingTop: '10px', paddingBottom: '10px' }} />
         </Layout>
     );
 }
